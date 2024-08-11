@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Inventory-for-home-WEB-ver..props" />
+</Project>
