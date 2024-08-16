@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Inventory-for-home-WEB-ver..props" />
-</Project>

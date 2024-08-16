@@ -1,0 +1,148 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\wwwroot\\js\\empaquesfuncjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:wwwroot\\js\\empaquesfuncjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\reglasdeprioridad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\reglasdeprioridad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\inventario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\inventario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\empaques.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\empaques.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 91,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAYAAACAzczMzMwHwCcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-16T04:02:54.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAA4AAABAZmZmZuYdwBMAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-16T04:03:18.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-16T04:04:23.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmpaquesFuncJS.js",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\EmpaquesFuncJS.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\EmpaquesFuncJS.js",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\EmpaquesFuncJS.js",
+              "RelativeToolTip": "wwwroot\\js\\EmpaquesFuncJS.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-16T04:06:33.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Inventario.cshtml",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Inventario.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Inventario.cshtml",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Inventario.cshtml",
+              "RelativeToolTip": "Views\\Home\\Inventario.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAADwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-16T04:08:19.118Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Reglasdeprioridad.cshtml",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Reglasdeprioridad.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Reglasdeprioridad.cshtml",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Reglasdeprioridad.cshtml",
+              "RelativeToolTip": "Views\\Home\\Reglasdeprioridad.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-16T04:08:41.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Empaques.cshtml",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Empaques.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Empaques.cshtml",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Empaques.cshtml",
+              "RelativeToolTip": "Views\\Home\\Empaques.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-16T04:09:03.012Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

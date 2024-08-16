@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Inventario";
+}
+
+<h1>Inventario</h1>
+
+<h1>Inventario</h1>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Inventario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventario de Productos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Artículos</th>
+                <th>Unidades deisponibles</th>
+                <th>Regla de prioridad</th>
+                <th>Tipo de empaque</th>
+                <th>Fecha de compra</th>
+                <th>Fecha de expiración</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Producto Prueba</td>
+                <td>50</td>
+                <td>Alta</td>
+                <td>caja de 24 pza</td>
+                <td>14/08/2024</td>
+                <td>05/02/2026</td>
+        </tbody>
+    </table>
+</body>
+</html>
