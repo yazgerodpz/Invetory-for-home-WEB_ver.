@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "FormularioInv";
+}
+
+<h1>FormularioInv</h1>
+
+<body>
+    <form id="itemForm">
+        <div>
+            <label for="itemName">Nombre del Ítem:</label>
+            <input type="text" id="itemName" name="itemName" required>
+        </div>
+        <div>
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+        </div>
+        <div>
+            <label for="idTypePrioritary">ID Tipo Prioritario:</label>
+            <input type="number" id="idTypePrioritary" name="idTypePrioritary" required>
+        </div>
+        <div>
+            <label for="idTypeStock">ID Tipo de Stock:</label>
+            <input type="number" id="idTypeStock" name="idTypeStock" required>
+        </div>
+        <div>
+            <label for="purchesDate">Fecha de Compra:</label>
+            <input type="date" id="purchesDate" name="purchesDate" required>
+        </div>
+        <div>
+            <label for="expirationDate">Fecha de Expiración:</label>
+            <input type="date" id="expirationDate" name="expirationDate" required>
+        </div>
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('itemForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let itemName = document.getElementById('itemName').value;
+            let stock = document.getElementById('stock').value;
+            let idTypePrioritary = document.getElementById('idTypePrioritary').value;
+            let idTypeStock = document.getElementById('idTypeStock').value;
+            let purchesDate = document.getElementById('purchesDate').value;
+            let expirationDate = document.getElementById('expirationDate').value;
+            
+            console.log('Nombre del Ítem:', itemName);
+            console.log('Stock:', stock);
+            console.log('ID Tipo Prioritario:', idTypePrioritary);
+            console.log('ID Tipo de Stock:', idTypeStock);
+            console.log('Fecha de Compra:', purchesDate);
+            console.log('Fecha de Expiración:', expirationDate);
+            
+            // Aquí puedes añadir la lógica de interacción con el backend o cualquier otra acción necesaria
+        });
+    </script>
+</body>

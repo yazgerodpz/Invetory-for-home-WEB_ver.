@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "FormularioPrio";
+}
+
+<h1>FormularioPrio</h1>
+
+<body>
+    <form id="catTypePrioritaryForm">
+        <div>
+            <label for="typePrioritaryName">Nombre del Tipo Prioritario:</label>
+            <input type="text" id="typePrioritaryName" name="typePrioritaryName" required>
+        </div>
+        <div>
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('catTypePrioritaryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let typePrioritaryName = document.getElementById('typePrioritaryName').value;
+            let description = document.getElementById('description').value;
+
+            console.log('Nombre del Tipo Prioritario:', typePrioritaryName);
+            console.log('Descripción:', description);
+
+            // Aquí puedes añadir la lógica de interacción con el backend o cualquier otra acción necesaria
+        });
+    </script>
+</body>

@@ -42,6 +42,27 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             return View();
         }
 
+        //crear vista para los formularios
+
+        //En inventario
+        public IActionResult FormularioInv()
+        {
+            return View();
+        }
+
+        //En regla de prioridad
+        public IActionResult FormularioPrio()
+        {
+            return View();
+        }
+
+        //En tipos de empaques
+        public IActionResult FormularioEmp()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

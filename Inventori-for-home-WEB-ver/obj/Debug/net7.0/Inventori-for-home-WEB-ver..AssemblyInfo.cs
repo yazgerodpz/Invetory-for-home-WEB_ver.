@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Inventori-for-home-WEB-ver.")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+480c184485fde48517c012a4ba5a9a78c720a82f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6e8170a6c9db87b502ce1707f67ad21c05487cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Inventori-for-home-WEB-ver.")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Inventori-for-home-WEB-ver.")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

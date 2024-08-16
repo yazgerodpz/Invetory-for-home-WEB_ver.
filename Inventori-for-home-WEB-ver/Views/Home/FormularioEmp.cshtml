@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "FormularioEmp";
+}
+
+<h1>FormularioEmp</h1>
+
+<body>
+    <form id="catTypeStockForm">
+        <div>
+            <label for="typeStockName">Nombre del Tipo de Stock:</label>
+            <input type="text" id="typeStockName" name="typeStockName" required>
+        </div>
+        <div>
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById('catTypeStockForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let typeStockName = document.getElementById('typeStockName').value;
+
+            console.log('Nombre del Tipo de Stock:', typeStockName);
+
+            // Aquí puedes añadir la lógica de interacción con el backend o cualquier otra acción necesaria
+        });
+    </script>
+</body>
