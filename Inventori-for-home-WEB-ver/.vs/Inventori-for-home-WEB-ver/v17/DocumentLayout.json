@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\formularioinv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\formularioinv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\formularioemp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\formularioemp.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\wwwroot\\js\\prioridadesfunc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:wwwroot\\js\\prioridadesfunc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\formularioprio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\formularioprio.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\empaques.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\empaques.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\inventario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\home\\inventario.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\home\\reglasdeprioridad.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -29,18 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\wwwroot\\js\\empaquesfuncjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:wwwroot\\js\\empaquesfuncjs.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|d:\\yazryr\\documentos\\programaci\u00F3n\\invetory-for-home-web_ver\\inventori-for-home-web-ver\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{32DC4691-E3E1-4A85-9790-5338C558C4E2}|Inventori-for-home-WEB-ver..csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,22 +26,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 91,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAswDsAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T04:02:54.842Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
@@ -80,98 +42,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA4AAABAZmZmZuYdwBoAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T04:03:18.576Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "site.js",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "wwwroot\\js\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-16T04:04:23.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EmpaquesFuncJS.js",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\EmpaquesFuncJS.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\EmpaquesFuncJS.js",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\EmpaquesFuncJS.js",
-              "RelativeToolTip": "wwwroot\\js\\EmpaquesFuncJS.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-16T04:06:33.982Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Inventario.cshtml",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Inventario.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Inventario.cshtml",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Inventario.cshtml",
-              "RelativeToolTip": "Views\\Home\\Inventario.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T04:08:19.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Reglasdeprioridad.cshtml",
               "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Reglasdeprioridad.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Reglasdeprioridad.cshtml",
               "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Reglasdeprioridad.cshtml",
               "RelativeToolTip": "Views\\Home\\Reglasdeprioridad.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T04:08:41.133Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Empaques.cshtml",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Empaques.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Empaques.cshtml",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Empaques.cshtml",
-              "RelativeToolTip": "Views\\Home\\Empaques.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T04:09:03.012Z",
+              "WhenOpened": "2024-08-17T03:41:27.519Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormularioInv.cshtml",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\FormularioInv.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\FormularioInv.cshtml",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\FormularioInv.cshtml",
-              "RelativeToolTip": "Views\\Home\\FormularioInv.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAowAUAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T05:34:10.809Z",
+              "Title": "PrioridadesFunc.js",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\PrioridadesFunc.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\PrioridadesFunc.js",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\PrioridadesFunc.js",
+              "RelativeToolTip": "wwwroot\\js\\PrioridadesFunc.js",
+              "ViewState": "AgIAADYAAAAAAAAAAAAQwEsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-17T03:42:13.347Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FormularioPrio.cshtml",
               "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\FormularioPrio.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\FormularioPrio.cshtml",
@@ -179,20 +76,20 @@
               "RelativeToolTip": "Views\\Home\\FormularioPrio.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T05:34:36.578Z",
+              "WhenOpened": "2024-08-17T04:02:54.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormularioEmp.cshtml",
-              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\FormularioEmp.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\FormularioEmp.cshtml",
-              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\FormularioEmp.cshtml",
-              "RelativeToolTip": "Views\\Home\\FormularioEmp.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T05:34:53.855Z",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAmwDUAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-17T04:22:44.262Z",
               "EditorCaption": ""
             }
           ]

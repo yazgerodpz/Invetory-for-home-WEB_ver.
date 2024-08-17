@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bx9YhkfYq4Vh8Q68U5xEqinJ/oYScC75lhYJOgt5b2Y=",
+  "Hash": "aqpxl2RqWWjdW51ClR0OirGPjpBNeA3/LEi9aVv31lg=",
   "Source": "Inventori-for-home-WEB-ver.",
   "BasePath": "_content/Inventori-for-home-WEB-ver.",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\EmpaquesFuncJS.js"
+    },
+    {
+      "Identity": "D:\\Yazryr\\Documentos\\Programación\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\PrioridadesFunc.js",
+      "SourceId": "Inventori-for-home-WEB-ver.",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Yazryr\\Documentos\\Programación\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\",
+      "BasePath": "_content/Inventori-for-home-WEB-ver.",
+      "RelativePath": "js/PrioridadesFunc.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\PrioridadesFunc.js"
     },
     {
       "Identity": "D:\\Yazryr\\Documentos\\Programación\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\site.js",

@@ -21,13 +21,13 @@
     </form>
 
     <script>
-        document.getElementById('catTypePrioritaryForm').addEventListener('submit', function(event) {
+            document.getElementById('catTypePrioritaryForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             let typePrioritaryName = document.getElementById('typePrioritaryName').value;
             let description = document.getElementById('description').value;
 
-            console.log('Nombre del Tipo Prioritario:', typePrioritaryName);
+            console.log('Nombre de la regla de prioridad:', typePrioritaryName);
             console.log('Descripción:', description);
 
             // Aquí puedes añadir la lógica de interacción con el backend o cualquier otra acción necesaria
