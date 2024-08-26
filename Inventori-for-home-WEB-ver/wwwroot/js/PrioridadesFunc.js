@@ -61,28 +61,35 @@ function abrirFormAñadir() {
             let description = document.getElementById('description').value;
             console.log("TERMINA PASO 1");
             /*VALIDAR QUE AMBOS CADENA NO ESTE VACIA*/
+            /*INFORMACIO INVALIDA INTENTE DE NUVO*/
+            if (!typePrioritaryName || !description) {
+                Swal.fire({
+                    title: "ERROR¡",
+                    text: "Faltan llenar campos",
+                    icon: "error"
+                }).then(() => {
+                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
+                    abrirFormAñadir();
+                });
+            } else {
 
                 /*SE ENVIA A BD*/
                 /*DEMO EN LOCAL*/
                 let idObtenido = 1;
-            llenarTabla(idObtenido, typePrioritaryName, description);
-            console.log("TERMINA PASO 2");
+                llenarTabla(idObtenido, typePrioritaryName, description);
+                console.log("TERMINA PASO 2");
                 /*SE ACTUALIZA TABLA*/
                 console.log('Nombre de la regla de prioridad:', typePrioritaryName);
                 console.log('Descripción:', description);
-            /*LANZAR OK O ERROR*/
-            console.log("TERMINA PASO 3");
+                /*LANZAR OK O ERROR*/
+                console.log("TERMINA PASO 3");
                 Swal.fire({
                     title: "Añadido!",
                     text: "Se añadio la regla.",
                     icon: "success"
                 });
-            /*INFORMACIO INVALIDA INTENTE DE NUVO*/
-            //Swal.fire({
-            //    title: "ERROR!",
-            //    text: "No se añadio la regla. Intente de nuevo",
-            //    icon: "error"
-            //});
+            }
+            
         }
     });
 }
