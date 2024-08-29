@@ -39,6 +39,7 @@ function abrirFormAñadir() {
             <br/>
             <div>
                 <label for="description">Descripción:</label>
+                <br/>
                 <input type="text" id="description" name="description" required>
             </div>
         </body>

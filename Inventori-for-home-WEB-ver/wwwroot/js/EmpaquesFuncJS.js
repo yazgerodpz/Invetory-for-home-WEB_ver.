@@ -24,13 +24,12 @@ function showAlerta() {
 
 function abrirFormAñadirE() {
     Swal.fire({
-        title: "<strong><u>Añadir empaque</u></strong>",
+        title: "<strong><u>Añadir Empaque</u></strong>",
         icon: "question",
         html: `
         <body>
             <div>
                 <label for="typeStockName">Nombre del Tipo de Stock:</label>
-                <br/>
                 <br/>
                 <input type="text" id="typeStockName" name="typeStockName" required>
             </div>
@@ -47,23 +46,26 @@ function abrirFormAñadirE() {
     <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
   `,
         cancelButtonAriaLabel: "Cancelar"
-    //Validacion y subida
+    /*Validacion y subida*/
     }).then((result) => {
         if (result.isConfirmed) {
             let typeStockName = document.getElementById('typeStockName').value;
             console.log("Interup point 1");
-            //mensaje de datos faltantes
+            /*mensaje de datos faltantes*/
             if (!typeStockName) {
                 Swal.fire({
                     title: "ERROR¡",
                     text: "Faltan llenar campos",
                     icon: "error"
+                }).then(() => {
+                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
+                    abrirFormAñadirE();
                 });
             } else {
                 let idcreado = 1;
                 llenarTabla(idcreado, typeStockName);
                 console.log("Interup point 2");
-                //comando con el texto para el formulario
+                /*comando con el texto para el formulario*/
                 console.log('Nombre y cantidad del empaque:', typeStockName);
                 console.log("Interup point 3");
                 Swal.fire({

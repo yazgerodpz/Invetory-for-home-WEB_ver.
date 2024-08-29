@@ -27,15 +27,50 @@
         tr:hover {
             background-color: #f1f1f1;
         }
+    /* Agregar estilo al boton */
+        .button {
+            background-color: #28a745; /* Color de fondo verde */
+            border: none; /* Sin bordes */
+            color: white; /* Texto en blanco */
+            padding: 12px 24px; /* Espaciado interior del botón */
+            text-align: center; /* Centrar el texto */
+            text-decoration: none; /* Sin subrayado */
+            display: inline-block; /* Hace que el botón esté en línea con otros elementos */
+            font-size: 16px; /* Tamaño de fuente */
+            font-weight: bold; /* Negrita */
+            border-radius: 8px; /* Bordes redondeados */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+            cursor: pointer; /* Cambia el cursor a una mano cuando pasa por encima */
+        }
+
+        .button:hover {
+            background-color: #218838; /* Color de fondo más oscuro al pasar el mouse */
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+        }
+
+        .button:active {
+            background-color: #1e7e34; /* Color de fondo más oscuro cuando se hace clic */
+            transform: scale(0.98); /* Hace el botón ligeramente más pequeño al hacer clic */
+        }
+
+        .button:disabled {
+            background-color: #c3e6cb; /* Color de fondo grisáceo cuando está deshabilitado */
+            cursor: not-allowed; /* Cambia el cursor a uno que indica que no se puede hacer clic */
+        }
     </style>
 <body>
     <h1>Inventario de Productos</h1>
-    <table>
+    <button onclick="abrirFormAñadirA()" class="button">Añadir Elemento</button>
+    <form action="@Url.Action("FormularioInv", "Home")" method="post">
+    </form>
+    <br/>
+    <br/>
+    <table id="gridInventario">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Artículos</th>
-                <th>Unidades deisponibles</th>
+                <th>Unidades disponibles</th>
                 <th>Regla de prioridad</th>
                 <th>Tipo de empaque</th>
                 <th>Fecha de compra</th>
@@ -43,14 +78,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Producto Prueba</td>
-                <td>50</td>
-                <td>Alta</td>
-                <td>caja de 24 pza</td>
-                <td>14/08/2024</td>
-                <td>05/02/2026</td>
         </tbody>
     </table>
 </body>
+
+@* CODIGO JS *@
+<script src="@Url.Content("~/js/InventarioFunc.js")"></script>
