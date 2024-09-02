@@ -39,7 +39,7 @@ function abrirFormAñadirA() {
         html: `
         <body>
             <div>
-                <label for="itemName">Nombre del Ítem:</label>
+                <label for="itemName">Nombre del Artícilo:</label>
                 <br/>
                 <input type="text" id="itemName" name="itemName" required>
             </div>
@@ -51,15 +51,25 @@ function abrirFormAñadirA() {
             </div>
             <br/>
             <div>
-                <label for="idTypePrioritary">ID Tipo Prioritario:</label>
+                <label for="typePrioritaryName">Regla de Prioridad:</label>
                 <br/>
-                <input type="number" id="idTypePrioritary" name="idTypePrioritary" required>
+                <select id="typePrioritaryName" name="typePrioritaryName" required>
+                    <option value="">Selecciona una regla de prioridad</option>
+                    <option value="prioridad1">Prioridad 1</option>
+                    <option value="prioridad2">Prioridad 2</option>
+                    <option value="prioridad3">Prioridad 3</option>
+                </select>
             </div>
             <br/>
             <div>
-                <label for="idTypeStock">ID Tipo de Stock:</label>
+                <label for="typeStockName">Tipo de empaque:</label>
                 <br/>
-                <input type="number" id="idTypeStock" name="idTypeStock" required>
+                <select id="typeStockName" name="typeStockName" required>
+                    <option value="">Selecciona un empaque</option>
+                    <option value="empaque1">empaque 1</option>
+                    <option value="empaque2">empaque 2</option>
+                    <option value="empaque3">empaque 3</option>
+                </select>
             </div>
             <br/>
             <div>
@@ -90,13 +100,13 @@ function abrirFormAñadirA() {
         if (result.isConfirmed) {
             let itemName = document.getElementById('itemName').value;
             let stock = document.getElementById('stock').value;
-            let idTypePrioritary = document.getElementById('idTypePrioritary').value;
-            let idTypeStock = document.getElementById('idTypeStock').value;
+            let typePrioritaryName = document.getElementById('typePrioritaryName').value;
+            let typeStockName = document.getElementById('typeStockName').value;
             let purchesDate = document.getElementById('purchesDate').value;
             let expirationDate = document.getElementById('expirationDate').value;
             console.log("Interup point 1");
             /*mensaje de datos faltantes*/
-            if (!itemName || !stock || !idTypePrioritary || !idTypeStock || !purchesDate || !expirationDate) {
+            if (!itemName || !stock || !typePrioritaryName || !typeStockName || !purchesDate || !expirationDate) {
                 Swal.fire({
                     title: "ERROR¡",
                     text: "Faltan llenar campos",
@@ -107,13 +117,13 @@ function abrirFormAñadirA() {
                 });
             } else {
                 let idcreado = 1;
-                llenarTabla(idcreado, itemName, stock, idTypePrioritary, idTypeStock, purchesDate, expirationDate);
+                llenarTabla(idcreado, itemName, stock, typePrioritaryName, typeStockName, purchesDate, expirationDate);
                 console.log("Interup point 2");
                 /*comando con el texto para el formulario*/
                 console.log('Nombre del artículo:', itemName);
                 console.log('Cantidad:', stock);
-                console.log('Regla de prioridad:', idTypePrioritary);
-                console.log('Tipo de empaque:', idTypeStock);
+                console.log('Regla de prioridad:', typePrioritaryName);
+                console.log('Tipo de empaque:', typeStockName);
                 console.log('Fecha de compra:', purchesDate);
                 console.log('Fecha de expiración:', expirationDate);
                 console.log("Interup point 3");

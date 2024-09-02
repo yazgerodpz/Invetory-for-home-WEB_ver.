@@ -70,8 +70,7 @@
               "RelativeToolTip": "Views\\Home\\Empaques.cshtml",
               "ViewState": "AgIAADkAAAAAAAAAAAAAAEIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-26T05:51:39.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T05:51:39.599Z"
             },
             {
               "$type": "Document",
@@ -83,8 +82,7 @@
               "RelativeToolTip": "wwwroot\\js\\EmpaquesFuncJS.js",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAAD0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-26T06:09:11.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-26T06:09:11.967Z"
             },
             {
               "$type": "Document",
@@ -94,7 +92,7 @@
               "RelativeDocumentMoniker": "Views\\Home\\Inventario.cshtml",
               "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\Views\\Home\\Inventario.cshtml",
               "RelativeToolTip": "Views\\Home\\Inventario.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAAD4AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAD4AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-29T02:06:35.715Z",
               "EditorCaption": ""
@@ -107,7 +105,7 @@
               "RelativeDocumentMoniker": "wwwroot\\js\\InventarioFunc.js",
               "ToolTip": "D:\\Yazryr\\Documentos\\Programaci\u00F3n\\Invetory-for-home-WEB_ver\\Inventori-for-home-WEB-ver\\wwwroot\\js\\InventarioFunc.js",
               "RelativeToolTip": "wwwroot\\js\\InventarioFunc.js",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAwwHQAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAGcAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-08-29T02:12:03.927Z",
               "EditorCaption": ""
@@ -122,8 +120,7 @@
               "RelativeToolTip": "wwwroot\\js\\PrioridadesFunc.js",
               "ViewState": "AgIAADYAAAAAAAAAAAAAAEkAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-08-29T02:55:42.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-29T02:55:42.378Z"
             }
           ]
         }
