@@ -2,8 +2,7 @@
     //SE VAN A TRAER DE BD LOS DATOS
     //SE VAN A PINTAR EN LA TABLA
     var grid = document.getElementById("gridPrioridades").getElementsByTagName('tbody')[0]
-    console.log("DETECTANDO");
-    console.log(document.getElementById("gridPrioridades").getElementsByTagName('tbody')[0]);
+
 
     var nuevafila = grid.insertRow();
 
@@ -16,13 +15,6 @@
     celdaDescripcion.innerHTML = descripcion;
 }
 
-function showAlerta() {
-    Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
-        icon: "success"
-    });
-}
 
 function abrirFormAñadir() {
     Swal.fire({
@@ -58,9 +50,8 @@ function abrirFormAñadir() {
     }).then((result) => {
         if (result.isConfirmed) {
             /*Antes tengo que hacer todo el proceso*/
-            let typePrioritaryName = document.getElementById('typePrioritaryName').value;
-            let description = document.getElementById('description').value;
-            console.log("TERMINA PASO 1");
+            let vartypePrioritaryName = document.getElementById('typePrioritaryName').value;
+            let vardescription = document.getElementById('description').value;
             /*VALIDAR QUE AMBOS CADENA NO ESTE VACIA*/
             /*INFORMACIO INVALIDA INTENTE DE NUVO*/
             if (!typePrioritaryName || !description) {
@@ -76,21 +67,55 @@ function abrirFormAñadir() {
 
                 /*SE ENVIA A BD*/
                 /*DEMO EN LOCAL*/
-                let idObtenido = 1;
-                llenarTabla(idObtenido, typePrioritaryName, description);
-                console.log("TERMINA PASO 2");
-                /*SE ACTUALIZA TABLA*/
-                console.log('Nombre de la regla de prioridad:', typePrioritaryName);
-                console.log('Descripción:', description);
-                /*LANZAR OK O ERROR*/
-                console.log("TERMINA PASO 3");
-                Swal.fire({
-                    title: "Añadido!",
-                    text: "Se añadio la regla.",
-                    icon: "success"
+                let idObtenido = 0;
+                const nuevoEmpaque = {
+                    IdTypePrioritary: 0,
+                    TypePrioritaryName: vartypePrioritaryName,
+                    _Description: vardescription,
+                    Active: true
+                };
+                fetch('/Prioridades/CrearPrio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Especificar el tipo de contenido
+                    },
+                    body: JSON.stringify(nuevoEmpaque) // Convertir el objeto a JSON
+                })
+                .then(response => response.json()) // Parsear la respuesta JSON
+                    .then(data => {
+                        if (data.success) {
+                        llenarTabla(data.data.idTypePrioritary, data.data.typePrioritaryName,data.data._Description)
+                        Swal.fire({
+                            title: "Añadido!",
+                            text: "Se añadio la regla.",
+                            icon: "success"
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al crear la regla.",
+                            icon: "error"
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Error al crear la regla.",
+                        icon: "error"
+                    });
                 });
             }
-            
         }
+    });
+}
+
+
+
+function showAlerta() {
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
     });
 }

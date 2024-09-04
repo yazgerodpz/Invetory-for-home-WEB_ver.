@@ -1,5 +1,8 @@
-var builder = WebApplication.CreateBuilder(args);
+using Inventori_for_home_WEB_ver_.Models;
 
+var builder = WebApplication.CreateBuilder(args);
+//AÑADIMOS EL CONTEXT AL PROYECTO PARA USARLO
+builder.Services.AddDbContext<InventoryForHomeContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

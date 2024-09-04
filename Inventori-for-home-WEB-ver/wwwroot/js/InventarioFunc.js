@@ -24,13 +24,6 @@
     celdaExpiracion.innerHTML = expiracion;
 }
 
-function showAlerta() {
-    Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
-        icon: "success"
-    });
-}
 
 function abrirFormAñadirA() {
     Swal.fire({
@@ -134,5 +127,14 @@ function abrirFormAñadirA() {
                 });
             }
         }
+    });
+}
+
+
+function showAlerta() {
+    Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success"
     });
 }
