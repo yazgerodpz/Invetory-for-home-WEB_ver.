@@ -1,9 +1,90 @@
-﻿function llenarTabla(id, articulo, disponible, regla, empaque, compra, expiracion) {
+﻿document.addEventListener('DOMContentLoaded', function () {
+    fetchCatTypePrioritaries();
+    fetchCatTypeStocks();
+    //AQUI LLAMAR OTRO CATALOGO
+    fetch('/Inventario/ReadInvs', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })    
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Aquí puedes manejar los datos recibidos, por ejemplo, llenar una tabla
+            data.data.forEach(item => {
+                llenarTabla(item.idItem, item.itemName, item.stock, item.typePrioritaryName,
+                    item.typeStockName, item.purchesDate, item.expirationDate)
+            });
+        } else {
+            Swal.fire({
+                title: "Error!",
+                text: "Error al crear el artículo.",
+                icon: "error"
+            });
+        }
+    })
+    .catch(error => {
+        Swal.fire({
+            title: "Error!",
+            text: "Error al crear el artículo.",
+            icon: "error"
+        });
+    })
+});
+
+let catTypePrioritariesData = [];
+let catTypeStockData = [];
+
+// Función para obtener los datos del endpoint
+function fetchCatTypePrioritaries() {
+    fetch('/Prioridades/ReadPrios', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Guarda los datos en la variable global
+            catTypePrioritariesData = data.data;
+        } else {
+            //poner alerta de error
+            console.error('Error al obtener los datos:', data);
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud:', error);
+    });
+}
+
+function fetchCatTypeStocks() {
+    fetch('/Empaques/ReadEmps', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Guarda los datos en la variable global
+            catTypeStockData = data.data;
+        } else {
+            console.error('Error al obtener los datos:', data);
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud:', error);
+    });
+}
+
+function llenarTabla(id, articulo, disponible, regla, empaque, compra, expiracion) {
     //SE VAN A TRAER DE BD LOS DATOS
     //SE VAN A PINTAR EN LA TABLA
     var grid = document.getElementById("gridInventario").getElementsByTagName('tbody')[0]
-    console.log("DETECTANDO");
-    console.log(document.getElementById("gridInventario").getElementsByTagName('tbody')[0]);
+    //console.log(document.getElementById("gridInventario").getElementsByTagName('tbody')[0]);
 
     var nuevafila = grid.insertRow();
 
@@ -25,14 +106,22 @@
 }
 
 
-function abrirFormAñadirA() {
+function abrirFormAñadirA(){
+
+
+    /*Cargar Opciones de prioridad*/
+    console.log(catTypePrioritariesData);
+    console.log(catTypeStockData);
+
+
     Swal.fire({
         title: "<strong><u>Añadir Articulo</u></strong>",
         icon: "question",
         html: `
         <body>
             <div>
-                <label for="itemName">Nombre del Artícilo:</label>
+                <label for="itemName">Nombre del Artículo:</label>
+                <br/>
                 <br/>
                 <input type="text" id="itemName" name="itemName" required>
             </div>
@@ -40,33 +129,29 @@ function abrirFormAñadirA() {
             <div>
                 <label for="stock">Stock:</label>
                 <br/>
+                <br/>
                 <input type="number" id="stock" name="stock" required>
             </div>
             <br/>
             <div>
                 <label for="typePrioritaryName">Regla de Prioridad:</label>
                 <br/>
+                <br/>
                 <select id="typePrioritaryName" name="typePrioritaryName" required>
-                    <option value="">Selecciona una regla de prioridad</option>
-                    <option value="prioridad1">Prioridad 1</option>
-                    <option value="prioridad2">Prioridad 2</option>
-                    <option value="prioridad3">Prioridad 3</option>
                 </select>
             </div>
             <br/>
             <div>
                 <label for="typeStockName">Tipo de empaque:</label>
                 <br/>
+                <br/>
                 <select id="typeStockName" name="typeStockName" required>
-                    <option value="">Selecciona un empaque</option>
-                    <option value="empaque1">empaque 1</option>
-                    <option value="empaque2">empaque 2</option>
-                    <option value="empaque3">empaque 3</option>
                 </select>
             </div>
             <br/>
             <div>
                 <label for="purchesDate">Fecha de Compra:</label>
+                <br/>
                 <br/>
                 <input type="date" id="purchesDate" name="purchesDate" required>
             </div>
@@ -74,10 +159,17 @@ function abrirFormAñadirA() {
             <div>
                 <label for="expirationDate">Fecha de Expiración:</label>
                 <br/>
+                <br/>
                 <input type="date" id="expirationDate" name="expirationDate" required>
             </div>
        <body>
   `,
+        willOpen: () => {
+            const dropdown = Swal.getPopup().querySelector('#typePrioritaryName');
+            cargarOpcionesPrioridadDropdown(dropdown);  // Carga las opciones al abrir el modal
+            const dropdown2 = Swal.getPopup().querySelector('#typeStockName');
+            cargarOpcionesEmpaquesDropdown(dropdown2);
+        },
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: false,
@@ -97,7 +189,6 @@ function abrirFormAñadirA() {
             let typeStockName = document.getElementById('typeStockName').value;
             let purchesDate = document.getElementById('purchesDate').value;
             let expirationDate = document.getElementById('expirationDate').value;
-            console.log("Interup point 1");
             /*mensaje de datos faltantes*/
             if (!itemName || !stock || !typePrioritaryName || !typeStockName || !purchesDate || !expirationDate) {
                 Swal.fire({
@@ -109,22 +200,51 @@ function abrirFormAñadirA() {
                     abrirFormAñadirA();
                 });
             } else {
-                let idcreado = 1;
-                llenarTabla(idcreado, itemName, stock, typePrioritaryName, typeStockName, purchesDate, expirationDate);
-                console.log("Interup point 2");
-                /*comando con el texto para el formulario*/
-                console.log('Nombre del artículo:', itemName);
-                console.log('Cantidad:', stock);
-                console.log('Regla de prioridad:', typePrioritaryName);
-                console.log('Tipo de empaque:', typeStockName);
-                console.log('Fecha de compra:', purchesDate);
-                console.log('Fecha de expiración:', expirationDate);
-                console.log("Interup point 3");
-                Swal.fire({
-                    title: "Añadido!",
-                    text: "Se añadio el artículo.",
-                    icon: "success"
-                });
+                const nuevoItem = {
+                    IdItem: 0,
+                    ItemName: itemName,
+                    Stock: stock,
+                    IdTypePrioritary: typePrioritaryName,
+                    IdTypeStock: typeStockName,
+                    PurchesDate: purchesDate,
+                    ExpirationDate: expirationDate,
+                    Active: true
+                };
+                console.log(nuevoItem);
+                fetch('/Inventario/CrearInv', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Especificar el tipo de contenido
+                    },
+                    body: JSON.stringify(nuevoItem) // Convertir el objeto a JSON
+                })
+                    .then(response => response.json()) // Parsear la respuesta JSON
+                    .then(data => {
+                        if (data.success) {
+                            llenarTabla(data.data.idItem, data.data.itemName,
+                                data.data.stock, data.data.typePrioritaryName,
+                                data.data.typeStockName, data.data.purchesDate,
+                                data.data.expirationDate,)
+                            Swal.fire({
+                                title: "Añadido!",
+                                text: "Se añadio el artículo.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Error al crear el artículo.",
+                                icon: "error"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al crear el artículo 2.",
+                            icon: "error"
+                        });
+                    });
             }
         }
     });
@@ -136,5 +256,30 @@ function showAlerta() {
         title: "Good job!",
         text: "You clicked the button!",
         icon: "success"
+    });
+}
+
+
+function cargarOpcionesPrioridadDropdown(dropdown) {
+    const opciones = catTypePrioritariesData
+
+    // Agregar cada opción al dropdown
+    opciones.forEach(opcion => {
+        const optionElement = document.createElement('option');
+        optionElement.value = opcion.idTypePrioritary;
+        optionElement.textContent = opcion.typePrioritaryName;
+        dropdown.appendChild(optionElement);
+    });
+}
+
+function cargarOpcionesEmpaquesDropdown(dropdown) {
+    const opciones = catTypeStockData
+
+    // Agregar cada opción al dropdown
+    opciones.forEach(opcion => {
+        const optionElement = document.createElement('option');
+        optionElement.value = opcion.idTypeStock;
+        optionElement.textContent = opcion.typeStockName;
+        dropdown.appendChild(optionElement);
     });
 }

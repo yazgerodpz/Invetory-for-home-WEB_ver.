@@ -17,13 +17,18 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             _context = inventoryForHomeContext;
         }
 
-
-
-        // GET: EmpaquesController
-        public ActionResult Index()
+        [HttpGet]
+        public JsonResult ReadEmps()
         {
-            return View();
+            var QryResult = _context.CatTypeStocks.ToList();
+            return new JsonResult(new { Success = true, Data = QryResult });
         }
+
+        //// GET: EmpaquesController
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         // GET: EmpaquesController/Details/5
         public ActionResult Details(int id)

@@ -6,13 +6,20 @@ namespace Inventori_for_home_WEB_ver_.Controllers
 {
     public class PrioridadesController : Controller
     {
-        //Tiene uqe tener una instancia privada del db context
+        //Tiene que tener una instancia privada del db context
         private InventoryForHomeContext _context;
 
         //COnstructor o funciono de incializacion que instancie el db context
         public PrioridadesController(InventoryForHomeContext inventoryForHomeContext)
         {
             _context = inventoryForHomeContext;
+        }
+
+        [HttpGet]
+        public JsonResult ReadPrios()
+        {
+            var QrysResult = _context.CatTypePrioritaries.ToList();
+            return new JsonResult(new { Success = true, Data = QrysResult });
         }
 
         // GET: PrioridadesController

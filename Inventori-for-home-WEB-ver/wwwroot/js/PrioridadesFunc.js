@@ -1,4 +1,32 @@
-﻿function llenarTabla(id,regla,descripcion) {
+﻿document.addEventListener('DOMContentLoaded', function () {
+    // Realizar la petición GET
+    fetch('/Prioridades/ReadPrios', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Aquí puedes manejar los datos recibidos, por ejemplo, llenar un dropdown o tabla
+                data.data.forEach(prioritario => {
+                    llenarTabla(prioritario.idTypePrioritary, prioritario.typePrioritaryName,
+                        prioritario._Description)
+                });
+            } else {
+                console.error("Error al cargar los datos");
+            }
+        })
+        .catch(error => {
+            console.error("Error en la petición:", error);
+        });
+});
+
+
+
+
+function llenarTabla(id, regla, descripcion) {
     //SE VAN A TRAER DE BD LOS DATOS
     //SE VAN A PINTAR EN LA TABLA
     var grid = document.getElementById("gridPrioridades").getElementsByTagName('tbody')[0]
@@ -31,6 +59,7 @@ function abrirFormAñadir() {
             <br/>
             <div>
                 <label for="description">Descripción:</label>
+                <br/>
                 <br/>
                 <input type="text" id="description" name="description" required>
             </div>
@@ -68,7 +97,7 @@ function abrirFormAñadir() {
                 /*SE ENVIA A BD*/
                 /*DEMO EN LOCAL*/
                 let idObtenido = 0;
-                const nuevoEmpaque = {
+                const nuevoReglaPrio = {
                     IdTypePrioritary: 0,
                     TypePrioritaryName: vartypePrioritaryName,
                     _Description: vardescription,
@@ -79,12 +108,13 @@ function abrirFormAñadir() {
                     headers: {
                         'Content-Type': 'application/json' // Especificar el tipo de contenido
                     },
-                    body: JSON.stringify(nuevoEmpaque) // Convertir el objeto a JSON
+                    body: JSON.stringify(nuevoReglaPrio) // Convertir el objeto a JSON
                 })
                 .then(response => response.json()) // Parsear la respuesta JSON
                     .then(data => {
                         if (data.success) {
-                        llenarTabla(data.data.idTypePrioritary, data.data.typePrioritaryName,data.data._Description)
+                            llenarTabla(data.data.idTypePrioritary, data.data.typePrioritaryName,
+                                data.data._Description)
                         Swal.fire({
                             title: "Añadido!",
                             text: "Se añadio la regla.",

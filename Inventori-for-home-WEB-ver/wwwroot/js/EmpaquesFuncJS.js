@@ -1,4 +1,34 @@
-﻿function llenarTabla(id, empaque) {
+﻿document.addEventListener('DOMContentLoaded', function () {
+    fetch('/Empaques/ReadEmps', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                //Puede ir aleta de success
+                // Aquí puedes manejar los datos que llegan del endpoint
+                 // Los datos de CatTypeStocks
+                // Ejemplo: recorrer y mostrar los datos
+                data.data.forEach(stock => {
+                    llenarTabla(stock.idTypeStock, stock.typeStockName)
+                });
+            } else {
+                    //Puede ir aleta de error
+            }
+        })
+        .catch(error => {
+            //Puede ir aleta de error
+        });
+});
+
+
+
+
+
+function llenarTabla(id, empaque) {
     //SE VAN A TRAER DE BD LOS DATOS
     //SE VAN A PINTAR EN LA TABLA
     var grid = document.getElementById("gridEmpaques").getElementsByTagName('tbody')[0]
@@ -21,6 +51,7 @@ function abrirFormAñadirE() {
         <body>
             <div>
                 <label for="typeStockName">Nombre del Tipo de Stock:</label>
+                <br/>
                 <br/>
                 <input type="text" id="typeStockName" name="typeStockName" required>
             </div>
@@ -94,65 +125,87 @@ function abrirFormAñadirE() {
     /*crear el formulario para actualizar*/
 function abrirFormActualizarE() {
     Swal.fire({
-        title: "<strong><u>Actualizar Empaque</u></strong>",
-        text: "question",
-        icon: `
-        <body>
-            <div>
-                <label for="idTypeStock">Id del empaque:</label>
-                <br/>
-                <input type="number" id="idTypeStock" name="idTypeStock" required>
-            </div>
+        title: "<strong>Actualizar<u></u></strong>",
+        icon: "question",
+        html: `
+     <body>
+         <form id="searchForm">
+            <!-- Campo de búsqueda -->
+            <label for="searchInput">Buscar:</label>
+            <input type="text" id="searchInput" name="searchInput" placeholder="Escribe tu búsqueda">
+
+            <!-- Botón de búsqueda -->
+            <button type="button" class="button2" onclick="buscar()">Buscar</button>
             <br/>
-            <div>
-                <label for="typeStockName">Nombre del Tipo de Stock:</label>
-                <br/>
-                <input type="text" id="typeStockName" name="typeStockName" required>
-            </div>
-        <body>
+            <br/>
+            <!-- Campo de texto adicional -->
+            <label for="additionalText">Texto adicional:</label>
+            <br/>
+            <br/>
+            <input type="text" id="additionalText" name="additionalText" placeholder="Escribe algo más">
+        </form>
+     <body>
   `,
         showCloseButton: true,
         showCancelButton: true,
         focusConfirm: false,
         confirmButtonText: `
-   <i class="fa fa-check-circle" aria-hidden="true"></i> Añandir
+    <i class="fa fa-check-circle" aria-hidden="true"></i> Actualizar
   `,
-        confirmButtonAriaLabel: "Añandir",
+        confirmButtonAriaLabel: "Actualizar",
         cancelButtonText: `
     <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
   `,
         cancelButtonAriaLabel: "Cancelar"
-        /*Validacion y subida*/
     }).then((result) => {
         if (result.isConfirmed) {
-            let idTypeStock = document.getElementById('idTypeStock').value;
-            let typeStockName = document.getElementById('typeStockName').value;
-            console.log("Interup point 1");
+            let varTypeStockName = document.getElementById('typeStockName').value;
+
             /*mensaje de datos faltantes*/
-            if (!idTypeStock || !typeStockName) {
+            if (!typeStockName) {
                 Swal.fire({
                     title: "ERROR¡",
                     text: "Faltan llenar campos",
                     icon: "error"
                 }).then(() => {
                     // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
-                    abrirFormActualizarE();
+                    abrirFormAñadirE();
                 });
             } else {
-                llenarTabla(idTypeStock, typeStockName);
-                console.log("Interup point 2");
-                /*comando con el texto para el formulario*/
-                console.log('introdusca el id del empaque buscado:', idTypeStock);
-                console.log('Nombre y cantidad del empaque:', typeStockName);
-                console.log("Interup point 3");
-                Swal.fire({
-                    title: "Añadido!",
-                    text: "Se añadio la regla.",
-                    icon: "success"
-                });
+                let idcreado = 0;
 
+                //Enviar a DB
+                $.ajax({
+                    url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
+                    type: 'POST', //tipo de metodo
+                    data: { nombreEmpaque: varTypeStockName },// variables del formlario enviadas
+                    //funcion de resultados
+                    success: function (response) {
+                        if (response.success) {
+                            idcreado = response.data.idTypeStock;
+                            llenarTabla(idcreado, varTypeStockName);
+                            Swal.fire({
+                                title: "Añadido!",
+                                text: "Se añadio la regla.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Error al crear el empaque.",
+                                icon: "error"
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al crear el empaque.",
+                            icon: "error"
+                        });
+                    }
+                });
             }
         }
-
     });
 }
