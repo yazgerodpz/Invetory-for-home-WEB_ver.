@@ -15,11 +15,19 @@
                         prioritario._Description)
                 });
             } else {
-                console.error("Error al cargar los datos");
+                Swal.fire({
+                    title: "Error!",
+                    text: "Error al cargar la información.",
+                    icon: "error"
+                });
             }
         })
         .catch(error => {
-            console.error("Error en la petición:", error);
+            Swal.fire({
+                title: "Error!",
+                text: "Error al cargar la información.",
+                icon: "error"
+            });
         });
 });
 
@@ -142,10 +150,98 @@ function abrirFormAñadir() {
 
 
 
-function showAlerta() {
+function abrirFormActualizarP() {
     Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
-        icon: "success"
+        title: "<strong>Ingrese el id de la regla que desea actualizar<u></u></strong>",
+        icon: "question",
+        html: `
+     <body>
+         <form id="searchForm">
+            <!-- Campo de búsqueda -->
+            <label for="searchInput">ID:</label>
+            <input type="number" id="searchInput" name="searchInput" required>
+
+            <!-- Botón de búsqueda -->
+            <button type="button" class="button2" onclick="buscar()">Buscar</button>
+            <br/>
+            <br/>
+            <!-- Campo de texto adicional -->
+            <div>
+                <label for="typePrioritaryName">Nombre de la regla de prioridad:</label>
+                <br/>
+                <br/>
+                <input type="text" id="typePrioritaryName" name="typePrioritaryName" required>
+            </div>
+            <br/>
+            <div>
+                <label for="description">Descripción:</label>
+                <br/>
+                <br/>
+                <input type="text" id="description" name="description" required>
+            </div>
+        </form>
+     <body>
+  `,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `
+    <i class="fa fa-check-circle" aria-hidden="true"></i> Actualizar
+  `,
+        confirmButtonAriaLabel: "Actualizar",
+        cancelButtonText: `
+    <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
+  `,
+        cancelButtonAriaLabel: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let varTypeStockName = document.getElementById('typeStockName').value;
+
+            /*mensaje de datos faltantes*/
+            if (!typeStockName) {
+                Swal.fire({
+                    title: "ERROR¡",
+                    text: "Faltan llenar campos",
+                    icon: "error"
+                }).then(() => {
+                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
+                    abrirFormAñadirE();
+                });
+            } else {
+                let idcreado = 0;
+
+                //Enviar a DB
+                $.ajax({
+                    url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
+                    type: 'POST', //tipo de metodo
+                    data: { nombreEmpaque: varTypeStockName },// variables del formlario enviadas
+                    //funcion de resultados
+                    success: function (response) {
+                        if (response.success) {
+                            idcreado = response.data.idTypeStock;
+                            llenarTabla(idcreado, varTypeStockName);
+                            Swal.fire({
+                                title: "Añadido!",
+                                text: "Se añadio la regla.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Error al crear el empaque.",
+                                icon: "error"
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al crear el empaque.",
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        }
     });
 }

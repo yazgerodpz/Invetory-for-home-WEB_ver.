@@ -125,24 +125,24 @@ function abrirFormAñadirE() {
     /*crear el formulario para actualizar*/
 function abrirFormActualizarE() {
     Swal.fire({
-        title: "<strong>Actualizar<u></u></strong>",
+        title: "<strong>Ingrese el id del empaque que desea actualizar<u></u></strong>",
         icon: "question",
         html: `
      <body>
          <form id="searchForm">
             <!-- Campo de búsqueda -->
-            <label for="searchInput">Buscar:</label>
-            <input type="text" id="searchInput" name="searchInput" placeholder="Escribe tu búsqueda">
+            <label for="searchInput">ID:</label>
+            <input type="number" id="searchInput" name="searchInput" required>
 
             <!-- Botón de búsqueda -->
             <button type="button" class="button2" onclick="buscar()">Buscar</button>
             <br/>
             <br/>
             <!-- Campo de texto adicional -->
-            <label for="additionalText">Texto adicional:</label>
+            <label for="typeStockName">Nombre del empaque:</label>
             <br/>
             <br/>
-            <input type="text" id="additionalText" name="additionalText" placeholder="Escribe algo más">
+            <input type="text" id="typeStockName" name="typeStockName" required>
         </form>
      <body>
   `,

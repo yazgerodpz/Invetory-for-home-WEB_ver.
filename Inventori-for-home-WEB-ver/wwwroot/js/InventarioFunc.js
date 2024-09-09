@@ -51,11 +51,19 @@ function fetchCatTypePrioritaries() {
             catTypePrioritariesData = data.data;
         } else {
             //poner alerta de error
-            console.error('Error al obtener los datos:', data);
+            Swal.fire({
+                title: "Error!",
+                text: "Error al cargar la información.",
+                icon: "error"
+            });
         }
     })
     .catch(error => {
-        console.error('Error en la solicitud:', error);
+        Swal.fire({
+            title: "Error!",
+            text: "Error al cargar la información.",
+            icon: "error"
+        });
     });
 }
 
@@ -72,11 +80,19 @@ function fetchCatTypeStocks() {
             // Guarda los datos en la variable global
             catTypeStockData = data.data;
         } else {
-            console.error('Error al obtener los datos:', data);
+            Swal.fire({
+                title: "Error!",
+                text: "Error al cargar la información.",
+                icon: "error"
+            });
         }
     })
     .catch(error => {
-        console.error('Error en la solicitud:', error);
+        Swal.fire({
+            title: "Error!",
+            text: "Error al cargar la información.",
+            icon: "error"
+        });
     });
 }
 
@@ -84,7 +100,6 @@ function llenarTabla(id, articulo, disponible, regla, empaque, compra, expiracio
     //SE VAN A TRAER DE BD LOS DATOS
     //SE VAN A PINTAR EN LA TABLA
     var grid = document.getElementById("gridInventario").getElementsByTagName('tbody')[0]
-    //console.log(document.getElementById("gridInventario").getElementsByTagName('tbody')[0]);
 
     var nuevafila = grid.insertRow();
 
@@ -110,8 +125,7 @@ function abrirFormAñadirA(){
 
 
     /*Cargar Opciones de prioridad*/
-    console.log(catTypePrioritariesData);
-    console.log(catTypeStockData);
+
 
 
     Swal.fire({
@@ -127,7 +141,7 @@ function abrirFormAñadirA(){
             </div>
             <br/>
             <div>
-                <label for="stock">Stock:</label>
+                <label for="stock">cantidad:</label>
                 <br/>
                 <br/>
                 <input type="number" id="stock" name="stock" required>
@@ -210,7 +224,6 @@ function abrirFormAñadirA(){
                     ExpirationDate: expirationDate,
                     Active: true
                 };
-                console.log(nuevoItem);
                 fetch('/Inventario/CrearInv', {
                     method: 'POST',
                     headers: {
@@ -251,11 +264,135 @@ function abrirFormAñadirA(){
 }
 
 
-function showAlerta() {
+function abrirFormActualizarA() {
     Swal.fire({
-        title: "Good job!",
-        text: "You clicked the button!",
-        icon: "success"
+        title: "<strong>Ingrese el id del artículo que desea actualizar<u></u></strong>",
+        icon: "question",
+        html: `
+     <body>
+         <form id="searchForm">
+            <!-- Campo de búsqueda -->
+            <label for="searchInput">ID:</label>
+            <input type="number" id="searchInput" name="searchInput" required>
+
+            <!-- Botón de búsqueda -->
+            <button type="button" class="button2" onclick="buscar()">Buscar</button>
+            <br/>
+            <br/>
+            <!-- Campo de texto adicional -->
+            <div>
+                <label for="itemName">Nombre del Artículo:</label>
+                <br/>
+                <br/>
+                <input type="text" id="itemName" name="itemName" required>
+            </div>
+            <br/>
+            <div>
+                <label for="stock">Cantidad:</label>
+                <br/>
+                <br/>
+                <input type="number" id="stock" name="stock" required>
+            </div>
+            <br/>
+            <div>
+                <label for="typePrioritaryName">Regla de Prioridad:</label>
+                <br/>
+                <br/>
+                <select id="typePrioritaryName" name="typePrioritaryName" required>
+                </select>
+            </div>
+            <br/>
+            <div>
+                <label for="typeStockName">Tipo de empaque:</label>
+                <br/>
+                <br/>
+                <select id="typeStockName" name="typeStockName" required>
+                </select>
+            </div>
+            <br/>
+            <div>
+                <label for="purchesDate">Fecha de Compra:</label>
+                <br/>
+                <br/>
+                <input type="date" id="purchesDate" name="purchesDate" required>
+            </div>
+            <br/>
+            <div>
+                <label for="expirationDate">Fecha de Expiración:</label>
+                <br/>
+                <br/>
+                <input type="date" id="expirationDate" name="expirationDate" required>
+            </div>
+        </form>
+     <body>
+  `,
+        willOpen: () => {
+            const dropdown = Swal.getPopup().querySelector('#typePrioritaryName');
+            cargarOpcionesPrioridadDropdown(dropdown);  // Carga las opciones al abrir el modal
+            const dropdown2 = Swal.getPopup().querySelector('#typeStockName');
+            cargarOpcionesEmpaquesDropdown(dropdown2);
+        },
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `
+    <i class="fa fa-check-circle" aria-hidden="true"></i> Actualizar
+  `,
+        confirmButtonAriaLabel: "Actualizar",
+        cancelButtonText: `
+    <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
+  `,
+        cancelButtonAriaLabel: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let varTypeStockName = document.getElementById('typeStockName').value;
+
+            /*mensaje de datos faltantes*/
+            if (!typeStockName) {
+                Swal.fire({
+                    title: "ERROR¡",
+                    text: "Faltan llenar campos",
+                    icon: "error"
+                }).then(() => {
+                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
+                    abrirFormAñadirE();
+                });
+            } else {
+                let idcreado = 0;
+
+                //Enviar a DB
+                $.ajax({
+                    url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
+                    type: 'POST', //tipo de metodo
+                    data: { nombreEmpaque: varTypeStockName },// variables del formlario enviadas
+                    //funcion de resultados
+                    success: function (response) {
+                        if (response.success) {
+                            idcreado = response.data.idTypeStock;
+                            llenarTabla(idcreado, varTypeStockName);
+                            Swal.fire({
+                                title: "Añadido!",
+                                text: "Se añadio la regla.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Error al crear el empaque.",
+                                icon: "error"
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al crear el empaque.",
+                            icon: "error"
+                        });
+                    }
+                });
+            }
+        }
     });
 }
 

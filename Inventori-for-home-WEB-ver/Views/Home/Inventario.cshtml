@@ -57,10 +57,41 @@
             background-color: #c3e6cb; /* Color de fondo grisáceo cuando está deshabilitado */
             cursor: not-allowed; /* Cambia el cursor a uno que indica que no se puede hacer clic */
         }
+
+    .button2 {
+        background-color: #F6B26B; /* Color de fondo verde */
+        border: none; /* Sin bordes */
+        color: white; /* Texto en blanco */
+        padding: 12px 24px; /* Espaciado interior del botón */
+        text-align: center; /* Centrar el texto */
+        text-decoration: none; /* Sin subrayado */
+        display: inline-block; /* Hace que el botón esté en línea con otros elementos */
+        font-size: 16px; /* Tamaño de fuente */
+        font-weight: bold; /* Negrita */
+        border-radius: 8px; /* Bordes redondeados */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+        cursor: pointer; /* Cambia el cursor a una mano cuando pasa por encima */
+    }
+
+        .button2:hover {
+            background-color: #e69138; /* Color de fondo más oscuro al pasar el mouse */
+            transform: scale(1.05); /* Aumenta ligeramente el tamaño al pasar el mouse */
+        }
+
+        .button2:active {
+            background-color: #dabea0; /* Color de fondo más oscuro cuando se hace clic */
+            transform: scale(0.98); /* Hace el botón ligeramente más pequeño al hacer clic */
+        }
+
+        .button2:disabled {
+            background-color: #e69138; /* Color de fondo grisáceo cuando está deshabilitado */
+            cursor: not-allowed; /* Cambia el cursor a uno que indica que no se puede hacer clic */
+        }
     </style>
 <body>
     <h1>Inventario de Productos</h1>
     <button onclick="abrirFormAñadirA()" class="button">Añadir Elemento</button>
+    <button onclick="abrirFormActualizarA()" class="button">Actualizar artículo</button>
     <form action="@Url.Action("FormularioInv", "Home")" method="post">
     </form>
     <br/>
