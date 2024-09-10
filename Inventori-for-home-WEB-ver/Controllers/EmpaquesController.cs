@@ -17,31 +17,6 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             _context = inventoryForHomeContext;
         }
 
-        [HttpGet]
-        public JsonResult ReadEmps()
-        {
-            var QryResult = _context.CatTypeStocks.ToList();
-            return new JsonResult(new { Success = true, Data = QryResult });
-        }
-
-        //// GET: EmpaquesController
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
-        // GET: EmpaquesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: EmpaquesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: EmpaquesController/CrearEmp
         [HttpPost]
         public JsonResult CrearEmp(string nombreEmpaque)
@@ -58,25 +33,33 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             return new JsonResult(new { Success = true, Data = nuevoEmpaque });
         }
 
-        // GET: EmpaquesController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public JsonResult ReadEmps()
         {
-            return View();
+            var QryResult = _context.CatTypeStocks.ToList();
+            return new JsonResult(new { Success = true, Data = QryResult });
         }
 
-        // POST: EmpaquesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpGet]
+        public JsonResult ReadEmpById(int id)
         {
-            try
+            var QryResult = _context.CatTypeStocks.Find(id);
+            return new JsonResult(new { Success = true, Data = QryResult });
+        }
+
+        [HttpPost]
+        public JsonResult EditEmp([FromBody] CatTypeStock nuevoItem)
+        {
+            CatTypeStock editarItem = new()
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                IdTypeStock = nuevoItem.IdTypeStock,
+                TypeStockName = nuevoItem.TypeStockName,
+                Active = true,
+            };
+
+            _context.CatTypeStocks.Update(editarItem);
+            _context.SaveChanges();
+            return new JsonResult(new { Success = true, Data = editarItem });
         }
 
         // GET: EmpaquesController/Delete/5

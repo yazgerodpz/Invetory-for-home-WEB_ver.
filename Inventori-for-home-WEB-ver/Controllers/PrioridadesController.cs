@@ -15,30 +15,7 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             _context = inventoryForHomeContext;
         }
 
-        [HttpGet]
-        public JsonResult ReadPrios()
-        {
-            var QrysResult = _context.CatTypePrioritaries.ToList();
-            return new JsonResult(new { Success = true, Data = QrysResult });
-        }
-
-        // GET: PrioridadesController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: PrioridadesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: PrioridadesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        
 
         // POST: PrioridadesController/CrearPrio
         [HttpPost]
@@ -58,26 +35,26 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             return new JsonResult(new { Success = true, Data = nuevoReglaPriority });
         }
 
+        [HttpGet]
+        public JsonResult ReadPrios()
+        {
+            var QrysResult = _context.CatTypePrioritaries.ToList();
+            return new JsonResult(new { Success = true, Data = QrysResult });
+        }
+
+        [HttpGet]
+        public JsonResult ReadPrioById(int id)
+        {
+            var QrysResult = _context.CatTypePrioritaries.Find(id);
+
+            return new JsonResult(new { Success = true, Data = QrysResult });
+        }
+
 
         // GET: PrioridadesController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
-        }
-
-        // POST: PrioridadesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // GET: PrioridadesController/Delete/5

@@ -276,7 +276,7 @@ function abrirFormActualizarA() {
             <input type="number" id="searchInput" name="searchInput" required>
 
             <!-- Botón de búsqueda -->
-            <button type="button" class="button2" onclick="buscar()">Buscar</button>
+            <button type="button" class="button2" id="searchButton">Buscar</button>
             <br/>
             <br/>
             <!-- Campo de texto adicional -->
@@ -342,60 +342,94 @@ function abrirFormActualizarA() {
         cancelButtonText: `
     <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
   `,
-        cancelButtonAriaLabel: "Cancelar"
+        cancelButtonAriaLabel: "Cancelar",
+        showLoaderOnConfirm: true,
+        didOpen: () => {
+            // Deshabilitar el botón de confirmación inicialmente
+            Swal.getConfirmButton().disabled = true;
+            // Obtener los elementos del formulario
+            const searchInput = document.getElementById("searchInput");
+            const searchButton = document.getElementById("searchButton");
+            const itemNameInput = document.getElementById("itemName");
+            const stockInput = document.getElementById("stock");
+            const typePrioritaryNameInput = document.getElementById("typePrioritaryName");
+            const typeStockNameInput = document.getElementById("typeStockName");
+            const purchesDateInput = document.getElementById("purchesDate");
+            const expirationDateInput = document.getElementById("expirationDate");
+            let idValor = 0;
+            let artName = null;
+            let cantidad = null;
+            let reglaP = null;
+            let empaName = null;
+            let compDate = null;
+            let cadDate = null;
+            // Asignar el evento de clic al botón de búsqueda
+            searchButton.addEventListener('click', function () {
+                const id = searchInput.value;
+
+                // Validar si el ID es válido
+                if (!id) {
+                    Swal.showValidationMessage(`
+                    "Error", "Debe ingresar un ID válido", "error"
+                  `);
+                    //Swal.fire("Error", "Debe ingresar un ID válido", "error");
+                    return;
+                }
+
+                // Hacer la solicitud a tu API
+                fetch(`/Inventario/ReadInvById/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("No se encontró la regla con el ID proporcionado");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Llenar los campos con los datos recibidos
+                        itemNameInput.value = data.data.itemName;
+                        stockInput.value = data.data.stock;
+                        typePrioritaryNameInput.value = data.data.idTypePrioritary;
+                        typeStockNameInput.value = data.data.idTypeStock;
+                        fechaFormateadaP = data.data.purchesDate.split('T')[0];
+                        purchesDateInput.value = fechaFormateadaP;
+                        fechaFormateadaE = data.data.expirationDate.split('T')[0];
+                        expirationDateInput.value = fechaFormateadaE;
+                        idValor = data.data.idItem;
+                        artName = data.data.itemName;
+                        cantidad = data.data.stock;
+                        reglaP = data.data.idTypePrioritary;
+                        empaName = data.data.idTypeStock;
+                        compDate = data.data.purchesDate.split('T')[0];
+                        cadDate = data.data.expirationDate.split('T')[0];
+                        console.log(artName);
+                        console.log(cantidad);
+                        console.log(reglaP);
+                        console.log(empaName);
+                        console.log(compDate);
+                        console.log(cadDate);
+
+                        // Habilitar el botón de confirmación
+                        //Swal.getConfirmButton().disabled = false;
+                    })
+                    .catch(error => {
+                        // Mostrar error en caso de fallo
+                        //Swal.fire("Error", error.message, "error");
+                        Swal.showValidationMessage(`
+                    Request failed: ${error}
+                    `);
+                    });
+            });
+        }
     }).then((result) => {
         if (result.isConfirmed) {
-            let varTypeStockName = document.getElementById('typeStockName').value;
-
-            /*mensaje de datos faltantes*/
-            if (!typeStockName) {
-                Swal.fire({
-                    title: "ERROR¡",
-                    text: "Faltan llenar campos",
-                    icon: "error"
-                }).then(() => {
-                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
-                    abrirFormAñadirE();
-                });
-            } else {
-                let idcreado = 0;
-
-                //Enviar a DB
-                $.ajax({
-                    url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
-                    type: 'POST', //tipo de metodo
-                    data: { nombreEmpaque: varTypeStockName },// variables del formlario enviadas
-                    //funcion de resultados
-                    success: function (response) {
-                        if (response.success) {
-                            idcreado = response.data.idTypeStock;
-                            llenarTabla(idcreado, varTypeStockName);
-                            Swal.fire({
-                                title: "Añadido!",
-                                text: "Se añadio la regla.",
-                                icon: "success"
-                            });
-                        } else {
-                            Swal.fire({
-                                title: "Error!",
-                                text: "Error al crear el empaque.",
-                                icon: "error"
-                            });
-                        }
-                    },
-                    error: function () {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Error al crear el empaque.",
-                            icon: "error"
-                        });
-                    }
-                });
-            }
         }
     });
 }
-
 
 function cargarOpcionesPrioridadDropdown(dropdown) {
     const opciones = catTypePrioritariesData

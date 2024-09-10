@@ -16,11 +16,21 @@
                     llenarTabla(stock.idTypeStock, stock.typeStockName)
                 });
             } else {
-                    //Puede ir aleta de error
+                //Puede ir aleta de error
+                Swal.fire({
+                    title: "Error!",
+                    text: "Error al cargar la información.",
+                    icon: "error"
+                });
             }
         })
         .catch(error => {
             //Puede ir aleta de error
+            Swal.fire({
+                title: "Error!",
+                text: "Error al cargar la información.",
+                icon: "error"
+            });
         });
 });
 
@@ -85,7 +95,6 @@ function abrirFormAñadirE() {
                 });
             } else {
                 let idcreado = 0;
-
                 //Enviar a DB
                 $.ajax({
                     url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
@@ -98,7 +107,7 @@ function abrirFormAñadirE() {
                             llenarTabla(idcreado, varTypeStockName);
                             Swal.fire({
                                 title: "Añadido!",
-                                text: "Se añadio la regla.",
+                                text: "Se añadio el nuevo empaque.",
                                 icon: "success"
                             });
                         } else {
@@ -135,7 +144,7 @@ function abrirFormActualizarE() {
             <input type="number" id="searchInput" name="searchInput" required>
 
             <!-- Botón de búsqueda -->
-            <button type="button" class="button2" onclick="buscar()">Buscar</button>
+            <button type="button" class="button2" id="searchButton">Buscar</button>
             <br/>
             <br/>
             <!-- Campo de texto adicional -->
@@ -156,56 +165,83 @@ function abrirFormActualizarE() {
         cancelButtonText: `
     <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
   `,
-        cancelButtonAriaLabel: "Cancelar"
+        cancelButtonAriaLabel: "Cancelar",
+        showLoaderOnConfirm: true,
+        didOpen: () => {
+            // Deshabilitar el botón de confirmación inicialmente
+            Swal.getConfirmButton().disabled = true;
+            // Obtener los elementos del formulario
+            const searchInput = document.getElementById("searchInput");
+            const searchButton = document.getElementById("searchButton");
+            const typeStockNameInput = document.getElementById("typeStockName");
+            //Añadir el oculto
+            let idValor = 0;
+            let empName = null;
+            // Asignar el evento de clic al botón de búsqueda
+            searchButton.addEventListener('click', function () {
+                const id = searchInput.value;
+
+                // Validar si el ID es válido
+                if (!id) {
+                    Swal.showValidationMessage(`
+                    "Error", "Debe ingresar un ID válido", "error"
+                  `);
+                    //Swal.fire("Error", "Debe ingresar un ID válido", "error");
+                    return;
+                }
+
+                // Hacer la solicitud a tu API
+                fetch(`/Empaques/ReadEmpById/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("No se encontró la regla con el ID proporcionado");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Llenar los campos con los datos recibidos
+                        typeStockNameInput.value = data.data.typeStockName;
+                        //ASifgnarle el id al oculto.
+                        idValor = data.data.idTypeStock;
+                        empName = data.data.typeStockName;
+                        console.log(empName);
+
+                        // Habilitar el botón de confirmación
+                        //Swal.getConfirmButton().disabled = false;
+                    })
+                    .catch(error => {
+                        // Mostrar error en caso de fallo
+                        //Swal.fire("Error", error.message, "error");
+                        Swal.showValidationMessage(`
+                    Request failed: ${error}
+                    `);
+                    });
+            });
+
+            //Añadir eventlistener para cambios en el campo texto
+            typeStockNameInput.addEventListener('change', function (event) {
+                // Obtén el valor actual del input
+                const nuevoValor = event.target.value;
+
+                // comparar y habilitar el guardado si cumple
+                if (nuevoValor != empName) {
+                    // Habilitar el botón de confirmación
+                    Swal.getConfirmButton().disabled = false;
+                }
+
+                if (nuevoValor == empName) {
+                    // Habilitar el botón de confirmación
+                    Swal.getConfirmButton().disabled = true;
+                }
+            });
+        }
     }).then((result) => {
         if (result.isConfirmed) {
-            let varTypeStockName = document.getElementById('typeStockName').value;
-
-            /*mensaje de datos faltantes*/
-            if (!typeStockName) {
-                Swal.fire({
-                    title: "ERROR¡",
-                    text: "Faltan llenar campos",
-                    icon: "error"
-                }).then(() => {
-                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
-                    abrirFormAñadirE();
-                });
-            } else {
-                let idcreado = 0;
-
-                //Enviar a DB
-                $.ajax({
-                    url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
-                    type: 'POST', //tipo de metodo
-                    data: { nombreEmpaque: varTypeStockName },// variables del formlario enviadas
-                    //funcion de resultados
-                    success: function (response) {
-                        if (response.success) {
-                            idcreado = response.data.idTypeStock;
-                            llenarTabla(idcreado, varTypeStockName);
-                            Swal.fire({
-                                title: "Añadido!",
-                                text: "Se añadio la regla.",
-                                icon: "success"
-                            });
-                        } else {
-                            Swal.fire({
-                                title: "Error!",
-                                text: "Error al crear el empaque.",
-                                icon: "error"
-                            });
-                        }
-                    },
-                    error: function () {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Error al crear el empaque.",
-                            icon: "error"
-                        });
-                    }
-                });
-            }
         }
     });
 }

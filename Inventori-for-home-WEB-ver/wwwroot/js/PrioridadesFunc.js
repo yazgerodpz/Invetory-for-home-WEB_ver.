@@ -152,96 +152,110 @@ function abrirFormAñadir() {
 
 function abrirFormActualizarP() {
     Swal.fire({
-        title: "<strong>Ingrese el id de la regla que desea actualizar<u></u></strong>",
-        icon: "question",
-        html: `
-     <body>
-         <form id="searchForm">
-            <!-- Campo de búsqueda -->
-            <label for="searchInput">ID:</label>
-            <input type="number" id="searchInput" name="searchInput" required>
+    title: "<strong>Ingrese el id de la regla que desea actualizar<u></u></strong>",
+    icon: "question",
+    html: `
+         <body>
+             <form id="searchForm">
+                <!-- Campo de búsqueda -->
+                <label for="searchInput">ID:</label>
+                <input type="number" id="searchInput" name="searchInput" required>
 
-            <!-- Botón de búsqueda -->
-            <button type="button" class="button2" onclick="buscar()">Buscar</button>
-            <br/>
-            <br/>
-            <!-- Campo de texto adicional -->
-            <div>
-                <label for="typePrioritaryName">Nombre de la regla de prioridad:</label>
+                <!-- Botón de búsqueda -->
+                <button type="button" class="button2" id="searchButton">Buscar</button>
                 <br/>
                 <br/>
-                <input type="text" id="typePrioritaryName" name="typePrioritaryName" required>
-            </div>
-            <br/>
-            <div>
-                <label for="description">Descripción:</label>
+                <!-- Campo de texto adicional -->
+                <div>
+                    <label for="typePrioritaryName">Nombre de la regla de prioridad:</label>
+                    <br/>
+                    <br/>
+                    <input type="text" id="typePrioritaryName" name="typePrioritaryName" required>
+                </div>
                 <br/>
-                <br/>
-                <input type="text" id="description" name="description" required>
-            </div>
-        </form>
-     <body>
-  `,
-        showCloseButton: true,
-        showCancelButton: true,
-        focusConfirm: false,
-        confirmButtonText: `
-    <i class="fa fa-check-circle" aria-hidden="true"></i> Actualizar
-  `,
-        confirmButtonAriaLabel: "Actualizar",
-        cancelButtonText: `
-    <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
-  `,
-        cancelButtonAriaLabel: "Cancelar"
+                <div>
+                    <label for="description">Descripción:</label>
+                    <br/>
+                    <br/>
+                    <textarea id="description" name="description" required rows="4" cols="30"></textarea>
+                </div>
+            </form>
+         <body>
+      `,
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: `
+        <i class="fa fa-check-circle" aria-hidden="true"></i> Actualizar
+        `,
+    confirmButtonAriaLabel: "Actualizar",
+    cancelButtonText: `
+        <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
+        `,
+    cancelButtonAriaLabel: "Cancelar",
+    showLoaderOnConfirm: true,
+    didOpen: () => {
+        // Deshabilitar el botón de confirmación inicialmente
+        Swal.getConfirmButton().disabled = true;
+        // Obtener los elementos del formulario
+        const searchInput = document.getElementById("searchInput");
+        const searchButton = document.getElementById("searchButton");
+        const typePrioritaryNameInput = document.getElementById("typePrioritaryName");
+        const descriptionInput = document.getElementById("description");
+        let idValor = 0;
+        let reglaName = null;
+        let reglaDesc = null;
+        // Asignar el evento de clic al botón de búsqueda
+        searchButton.addEventListener('click', function () {
+            const id = searchInput.value;
+
+            // Validar si el ID es válido
+            if (!id) {
+                Swal.showValidationMessage(`
+                    "Error", "Debe ingresar un ID válido", "error"
+                  `);
+                //Swal.fire("Error", "Debe ingresar un ID válido", "error");
+                return;
+            }
+
+            // Hacer la solicitud a tu API
+            fetch(`/Prioridades/ReadPrioById/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("No se encontró la regla con el ID proporcionado");
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Llenar los campos con los datos recibidos
+                typePrioritaryNameInput.value = data.data.typePrioritaryName;
+                descriptionInput.value = data.data._Description;
+                idValor = data.data.idTypePrioritary;
+                reglaName = data.data.typePrioritaryName;
+                reglaDesc = data.data._Description;
+                console.log(reglaName)
+                console.log(reglaDesc)
+                
+
+                // Habilitar el botón de confirmación
+                //Swal.getConfirmButton().disabled = false;
+            })
+            .catch(error => {
+                // Mostrar error en caso de fallo
+                //Swal.fire("Error", error.message, "error");
+                Swal.showValidationMessage(`
+                    Request failed: ${error}
+                    `);
+            });
+        });
+    }
     }).then((result) => {
         if (result.isConfirmed) {
-            let varTypeStockName = document.getElementById('typeStockName').value;
-
-            /*mensaje de datos faltantes*/
-            if (!typeStockName) {
-                Swal.fire({
-                    title: "ERROR¡",
-                    text: "Faltan llenar campos",
-                    icon: "error"
-                }).then(() => {
-                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
-                    abrirFormAñadirE();
-                });
-            } else {
-                let idcreado = 0;
-
-                //Enviar a DB
-                $.ajax({
-                    url: '/Empaques/CrearEmp', // URL del controlador y método en MVC
-                    type: 'POST', //tipo de metodo
-                    data: { nombreEmpaque: varTypeStockName },// variables del formlario enviadas
-                    //funcion de resultados
-                    success: function (response) {
-                        if (response.success) {
-                            idcreado = response.data.idTypeStock;
-                            llenarTabla(idcreado, varTypeStockName);
-                            Swal.fire({
-                                title: "Añadido!",
-                                text: "Se añadio la regla.",
-                                icon: "success"
-                            });
-                        } else {
-                            Swal.fire({
-                                title: "Error!",
-                                text: "Error al crear el empaque.",
-                                icon: "error"
-                            });
-                        }
-                    },
-                    error: function () {
-                        Swal.fire({
-                            title: "Error!",
-                            text: "Error al crear el empaque.",
-                            icon: "error"
-                        });
-                    }
-                });
-            }
         }
     });
 }

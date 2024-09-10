@@ -44,10 +44,14 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             return new JsonResult(new { Success = true, Data = result });
         }
 
-        // GET: InventarioController
-        public ActionResult Index()
+        [HttpGet]
+        public JsonResult ReadInvById(int id)
         {
-            return View();
+            var QrysResult = _context.Items.Find(id);
+
+           
+                // Devolver la respuesta con el nuevo Item y su relación con CatTypeStock
+                return new JsonResult(new { Success = true, Data = QrysResult });
         }
 
         // GET: InventarioController/Details/5
