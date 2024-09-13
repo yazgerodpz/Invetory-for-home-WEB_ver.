@@ -85,9 +85,6 @@ namespace Inventori_for_home_WEB_ver_.Controllers
                 Active = nuevoItem.Active  // Utilizamos el estado activo del ítem
             };
 
-            //nuevoItem.IdTypePrioritary = TypePrioritaryName,
-            //nuevoItem.IdTypeStock = TypeStockName;
-
             // Guardar el nuevo Item en la base de datos
             _context.Items.Add(nuevoItem);
             _context.SaveChanges();
@@ -115,6 +112,55 @@ namespace Inventori_for_home_WEB_ver_.Controllers
 
             // Devolver la respuesta con el nuevo Item y su relación con CatTypeStock
             return new JsonResult(new { Success = true, Data = result });
+        }
+
+        [HttpPost]
+        public JsonResult EditarInv([FromBody] Item actItem)
+        {
+
+            Item editarArt = new()
+            {
+                IdItem = actItem.IdItem,  // Se asigna automáticamente al guardar
+                ItemName = actItem.ItemName,  // Utilizamos el nombre del ítem como el nombre del stock
+                Stock = actItem.Stock,
+                IdTypePrioritary = actItem.IdTypePrioritary,
+                //TypePrioritaryName = nuevoItem.TypePrioritaryName,
+                IdTypeStock = actItem.IdTypeStock,
+                //TypeStockName = nuevoItem.TypeStockName,
+                PurchesDate = actItem.PurchesDate,
+                ExpirationDate = actItem.ExpirationDate,
+                Active = actItem.Active  // Utilizamos el estado activo del ítem
+            };
+
+            // Guardar el nuevo Item en la base de datos
+            _context.Items.Update(editarArt);
+            _context.SaveChanges();
+
+            // Devolver la respuesta con el nuevo Item y su relación con CatTypeStock
+            return new JsonResult(new { Success = true, Data = editarArt });
+        }
+
+        //GET: InventarioController/Delete
+        [HttpGet]
+        public JsonResult DeleteArt(int id)
+        {
+            //Obtener el elemento
+            var QrysResult = _context.Items.Find(id);
+            //Validar que existe
+            if (QrysResult != null)
+            {
+                //eliminar el elemento
+                _context.Items.Remove(QrysResult);
+                //salvar cambios
+                _context.SaveChanges();
+                // Devolver ok
+                return new JsonResult(new { Success = true, Data = string.Empty });
+            }
+            else
+            {
+                return new JsonResult(new { Success = false, Data = "Error: El elemento a borrar no existe." });
+            }
+
         }
 
 

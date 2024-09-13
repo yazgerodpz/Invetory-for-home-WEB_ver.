@@ -46,7 +46,8 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             var QryResult = _context.CatTypeStocks.Find(id);
             return new JsonResult(new { Success = true, Data = QryResult });
         }
-
+        
+        // POST: EmpaquesController/EditEmp
         [HttpPost]
         public JsonResult EditEmp([FromBody] CatTypeStock nuevoItem)
         {
@@ -63,24 +64,27 @@ namespace Inventori_for_home_WEB_ver_.Controllers
         }
 
         // GET: EmpaquesController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        public JsonResult Delete(int id)
         {
-            return View();
+            //Obtener el elemento
+            var QryResult = _context.CatTypeStocks.Find(id);
+            //Validar que existe
+            if(QryResult != null)
+            {
+                //Eliminar el elemento de la tabla
+                _context.CatTypeStocks.Remove(QryResult);
+                //Guardar cambios
+                _context.SaveChanges();
+                //Rregresar ok
+                return new JsonResult(new { Success = true, Data = string.Empty });
+            }
+            else
+            {
+                return new JsonResult(new { Success = false, Data = "Error: El elemento a borrar no existe." });
+            }
         }
 
-        // POST: EmpaquesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

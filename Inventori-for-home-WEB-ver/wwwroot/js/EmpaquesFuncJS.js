@@ -147,11 +147,14 @@ function abrirFormActualizarE() {
             <button type="button" class="button2" id="searchButton">Buscar</button>
             <br/>
             <br/>
+  
             <!-- Campo de texto adicional -->
             <label for="typeStockName">Nombre del empaque:</label>
             <br/>
             <br/>
             <input type="text" id="typeStockName" name="typeStockName" required>
+            <br/>
+            <input type="hidden" id="hiddenID" name="guardarID">
         </form>
      <body>
   `,
@@ -175,7 +178,8 @@ function abrirFormActualizarE() {
             const searchButton = document.getElementById("searchButton");
             const typeStockNameInput = document.getElementById("typeStockName");
             //Añadir el oculto
-            let idValor = 0;
+            // Referencia al campo oculto
+            const hiddenIDInput = document.getElementById("hiddenID");
             let empName = null;
             // Asignar el evento de clic al botón de búsqueda
             searchButton.addEventListener('click', function () {
@@ -207,10 +211,10 @@ function abrirFormActualizarE() {
                         // Llenar los campos con los datos recibidos
                         typeStockNameInput.value = data.data.typeStockName;
                         //ASifgnarle el id al oculto.
-                        idValor = data.data.idTypeStock;
+                        // Asignar el ID al campo oculto
+                        hiddenIDInput.value = data.data.idTypeStock;
                         empName = data.data.typeStockName;
-                        console.log(empName);
-
+                        console.log(hiddenIDInput)
                         // Habilitar el botón de confirmación
                         //Swal.getConfirmButton().disabled = false;
                     })
@@ -235,13 +239,209 @@ function abrirFormActualizarE() {
                 }
 
                 if (nuevoValor == empName) {
-                    // Habilitar el botón de confirmación
+                    // Deshabilitar el botón de confirmación
                     Swal.getConfirmButton().disabled = true;
                 }
             });
         }
     }).then((result) => {
         if (result.isConfirmed) {
+
+            let idOculto = document.getElementById('hiddenID').value;
+            let nuevoValor = document.getElementById('typeStockName').value;
+            /*mensaje de datos faltantes*/
+            if (!typeStockName) {
+                Swal.fire({
+                    title: "ERROR¡",
+                    text: "Faltan llenar campos",
+                    icon: "error"
+                }).then(() => {
+                    // Si el usuario acepta el mensaje de error, vuelve a mostrar el formulario
+                    abrirFormAñadirE();
+                });
+            } else {
+                
+                const editarItem = {
+                    IdTypeStock: idOculto,
+                    TypeStockName: nuevoValor,
+                    Active: true
+                };
+                //Enviar a DB
+                fetch('/Empaques/EditEmp', { // URL del controlador y método en MVC
+                    method: 'POST', //tipo de metodo
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(editarItem)
+                })
+                .then(response => response.json()) // Parsear la respuesta JSON
+                    .then(data => {
+                        if (data.success) {
+                            llenarTabla(data.data.idTypeStock, data.data.typeStockName)
+                            Swal.fire({
+                                title: "Añadido!",
+                                text: "Se actualizo el empaque correctamente.",
+                                icon: "success"
+                            });
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Error al actualizar el empaque.",
+                                icon: "error"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al actualizar el empaque.",
+                            icon: "error"
+                        });
+                    });
+            }
+        }
+    });
+}
+
+function abrirFormBorrarE() {
+    Swal.fire({
+        title: "<strong>Ingrese el id del empaque que desea borrar<u></u></strong>",
+        icon: "question",
+        html: `
+     <body>
+         <form id="searchForm">
+            <!-- Campo de búsqueda -->
+            <label for="searchInput">ID:</label>
+            <input type="number" id="searchInput" name="searchInput" required>
+
+            <!-- Botón de búsqueda -->
+            <button type="button" class="button3" id="searchButton">Buscar</button>
+            <br/>
+            <br/>
+  
+            <!-- Campo de texto adicional -->
+            <label for="typeStockName">Nombre del empaque:</label>
+            <br/>
+            <br/>
+            <input type="text" id="typeStockName" name="typeStockName" required>
+            <br/>
+            <input type="hidden" id="hiddenID" name="guardarID">
+        </form>
+     <body>
+  `,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `
+    <i class="fa fa-check-circle" aria-hidden="true"></i> Borrar
+  `,
+        confirmButtonAriaLabel: "Borrar",
+        cancelButtonText: `
+    <i class="fa fa-times-circle" aria-hidden="true"></i> Cancelar
+  `,
+        cancelButtonAriaLabel: "Cancelar",
+        showLoaderOnConfirm: true,
+        didOpen: () => {
+            // Deshabilitar el botón de confirmación inicialmente
+            Swal.getConfirmButton().disabled = true;
+            // Obtener los elementos del formulario
+            const searchInput = document.getElementById("searchInput");
+            const searchButton = document.getElementById("searchButton");
+            const typeStockNameInput = document.getElementById("typeStockName");
+            //Añadir el oculto
+            // Referencia al campo oculto
+            const hiddenIDInput = document.getElementById("hiddenID");
+            // Asignar el evento de clic al botón de búsqueda
+            searchButton.addEventListener('click', function () {
+                const id = searchInput.value;
+
+                // Validar si el ID es válido
+                if (!id) {
+                    Swal.showValidationMessage(`
+                    "Error", "Debe ingresar un ID válido", "error"
+                  `);
+                    //Swal.fire("Error", "Debe ingresar un ID válido", "error");
+                    return;
+                }
+
+                // Hacer la solicitud a tu API
+                fetch(`/Empaques/ReadEmpById/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("No se encontró el empaque con el ID proporcionado");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Llenar los campos con los datos recibidos
+                        typeStockNameInput.value = data.data.typeStockName;
+                        //ASifgnarle el id al oculto.
+                        // Asignar el ID al campo oculto
+                        hiddenIDInput.value = data.data.idTypeStock;
+                        console.log(hiddenIDInput)
+                        // Habilitar el botón de confirmación
+                        Swal.getConfirmButton().disabled = false;
+                    })
+                    .catch(error => {
+                        // Mostrar error en caso de fallo
+                        //Swal.fire("Error", error.message, "error");
+                        Swal.showValidationMessage(`
+                    Request failed: ${error}
+                    `);
+                    });
+            });
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            let idOculto = document.getElementById('hiddenID').value;
+            //validar que el id oculta exista
+            if (!idOculto) {
+                Swal.fire({
+                    title: "ERROR¡",
+                    text: "No se ha seleccionado un empaque válido para eliminar",
+                    icon: "error"
+                });
+                    return;
+            } else {
+                //Enviar a DB
+                fetch(`/Empaques/Delete/${idOculto}`, { // URL del controlador y método en MVC
+                    method: 'GET', //tipo de metodo
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json()) // Parsear la respuesta JSON
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                title: "Eliminado!",
+                                text: "El empaque ha sido eliminado correctamente.",
+                                icon: "success"
+                            });
+                            setTimeout(function () { location.reload(); }, 1500); // Una función vacía que no hace nada después de 3 segundos
+                            
+                        } else {
+                            Swal.fire({
+                                title: "Error!",
+                                text: data.data,
+                                icon: "error"
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error al borrar el empaque 2.",
+                            icon: "error"
+                        });
+                    });
+            }
         }
     });
 }

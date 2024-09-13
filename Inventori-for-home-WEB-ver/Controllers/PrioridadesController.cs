@@ -50,6 +50,46 @@ namespace Inventori_for_home_WEB_ver_.Controllers
             return new JsonResult(new { Success = true, Data = QrysResult });
         }
 
+        [HttpPost]
+        public JsonResult EditPrio([FromBody] CatTypePrioritary ActReglaPrio)
+        {
+            CatTypePrioritary editarReglaP = new()
+            {
+                IdTypePrioritary = ActReglaPrio.IdTypePrioritary,  // Asigna un ID nuevo si es necesario.
+                TypePrioritaryName = ActReglaPrio.TypePrioritaryName,  // Utiliza el nombre del objeto recibido.
+                _Description = ActReglaPrio._Description,
+                Active = true,  // Utiliza el estado activo del objeto recibido.
+            };
+
+            _context.CatTypePrioritaries.Update(editarReglaP);
+            _context.SaveChanges();
+
+            return new JsonResult(new { Success = true, Data = editarReglaP });
+        }
+
+        // GET PrioridadesController/Delete
+        [HttpGet]
+        public JsonResult DeletePrio(int id)
+        {
+            //Variable para obtener el elemento
+            var QrysResult = _context.CatTypePrioritaries.Find(id);
+            //verificar (validar) que existe
+            if (QrysResult != null)
+            {
+                //Eliminar el elemento de la tabla
+                _context.CatTypePrioritaries.Remove(QrysResult);
+                //Guardar cambios
+                _context.SaveChanges();
+                //Regresar ok
+                return new JsonResult(new { Success = true, Data = string.Empty });
+
+            }
+            else
+            {
+                return new JsonResult(new { Success = false, Data = "Error: El elemento a borrar no existe." });
+            }
+        }
+
 
         // GET: PrioridadesController/Edit/5
         public ActionResult Edit(int id)
